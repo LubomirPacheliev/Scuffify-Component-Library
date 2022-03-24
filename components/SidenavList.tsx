@@ -1,6 +1,9 @@
-import { css } from '@emotion/react';
+/** @jsx jsx */
+import { css, jsx } from '@emotion/react';
 
-type Props = {
+type Props = { options?: any }
+
+type Options = {
     width?: Number, height?: Number, color?: string, background?: string,
     display?: string, isFlex?: boolean, direction?: string,
     wrap?: string, justifyContent?: string, alignItems?: string,
@@ -11,7 +14,7 @@ const SidenavList = (props: Props) => {
     const { 
         width, height, color, background, display, isFlex, direction,
         wrap, justifyContent, alignItems, alignContent
-    } = props;
+    }: Options = props.options;
 
     const flex = `
         flex-direction: ${!direction ? 'column' : direction},
@@ -32,7 +35,12 @@ const SidenavList = (props: Props) => {
     `;
 
     return (
-        <ul css={css`${style}`}>sidenav listing biiiitch 🤑</ul>   
+        <ul css={css`${style}`}>
+            <li>sidenav listing biiiitch 🤑</li>
+            <li>sidenav listing biiiitch 🤑</li>
+            <li>sidenav listing biiiitch 🤑</li>
+            <li>sidenav listing biiiitch 🤑</li>
+        </ul>   
     )
 }
 
