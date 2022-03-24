@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "jsx": "react-jsx",
+        "jsxImportSource": "@emotion/react",
+        "strict": true,
+        "outDir": "./dist",
+        "esModuleInterop": true
+    }
+}
