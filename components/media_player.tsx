@@ -4,7 +4,7 @@ type Props = {}
 
 const media_player = (props: Props) => {
   return (
-    <div>media_player</div>
+    <div>media_players</div>
   )
 }
 
