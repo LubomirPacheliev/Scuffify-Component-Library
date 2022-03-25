@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { useState } from 'react';
+import Link from 'next/link';
 import { css, jsx } from '@emotion/react';
 
-type ListData = HTMLElement | string | (HTMLElement & string )[];
+type ListData = HTMLElement | string | ((HTMLElement | HTMLImageElement | string ) & string )[];
 
 // type can be either router or listing
 type Props = { type?: string, data?: ListData[], options?: any }
@@ -53,7 +54,21 @@ const SidenavList = (props: Props) => {
     //TODO: Add css for icon, add font size, font
     return (
         <ul css={css`${style}`}>
-            
+            {
+                data.map((item, idx) => {
+                    if (Array.isArray(item)) {
+                       return ( 
+                       <li key={idx}>
+                            {<img src={item[1]} alt="icon" />}
+                            <Link href={item[0]}></Link>
+                        </li>
+                       )
+                    }
+                    // else if () {
+
+                    // }
+                })
+            }
         </ul> 
     );
 }
