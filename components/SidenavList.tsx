@@ -1,7 +1,11 @@
 /** @jsx jsx */
+import { useState } from 'react';
 import { css, jsx } from '@emotion/react';
 
-type Props = { options?: any }
+type ListData = HTMLElement | string | (HTMLElement & string )[];
+
+// type can be either router or listing
+type Props = { type?: string, data?: ListData[], options?: any }
 
 type Options = {
     width?: Number, height?: Number, color?: string, background?: string,
@@ -15,6 +19,8 @@ const SidenavList = (props: Props) => {
         width, height, color, background, display, isFlex, direction,
         wrap, justifyContent, alignItems, alignContent
     }: Options = props.options;
+    const type = props.type ? props.type : 'router';
+    const data = props.data ? props.data : [];
 
     const flex = `
         flex-direction: ${!direction ? 'column' : direction},
@@ -34,14 +40,22 @@ const SidenavList = (props: Props) => {
 
     `;
 
+    if (type === 'listing') {
+        const [listData, setListData] = useState(data);
+        const addToList = (toAdd: ListData) => setListData(prev => prev.concat(toAdd));
+        return (
+            <ul css={css`${style}`}>
+                {listData.map((item, idx) => <li key={idx}>{item}</li>)}
+            </ul>   
+        );
+    } 
+
+    //TODO: Add css for icon, add font size, font
     return (
         <ul css={css`${style}`}>
-            <li>sidenav listing biiiitch 🤑</li>
-            <li>sidenav listing biiiitch 🤑</li>
-            <li>sidenav listing biiiitch 🤑</li>
-            <li>sidenav listing biiiitch 🤑</li>
-        </ul>   
-    )
+            
+        </ul> 
+    );
 }
 
 export default SidenavList;
